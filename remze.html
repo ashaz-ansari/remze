@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RemZe-Best Online Shopping Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f2f3f4;color:#212121}
+:root{--p:#00447c;--pd:#002756;--a:#0b7b9e;--b:#dddace;--r:7px}
+
+/* NAV */
+nav{background:var(--p);display:flex;align-items:center;gap:12px;padding:0 20px;height:52px;position:sticky;top:0;z-index:99;box-shadow:0 2px 10px rgba(0,39,86,.3)}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#fff;cursor:pointer;white-space:nowrap}
+.logo span{color:#d6ec0c}
+.search-wrap{flex:1;max-width:520px;display:flex;background:#fff;border-radius:var(--r);overflow:hidden}
+.search-wrap input{flex:1;border:none;outline:none;padding:8px 12px;font-size:13px;font-family:'DM Sans',sans-serif}
+.search-wrap button{background:var(--a);border:none;padding:8px 14px;cursor:pointer;color:#fff;font-size:13px}
+.nav-btns{display:flex;gap:4px;margin-left:auto}
+.nbtn{background:none;border:none;color:#fff;font-size:12px;font-family:'DM Sans',sans-serif;cursor:pointer;padding:6px 10px;border-radius:5px;display:flex;align-items:center;gap:5px;position:relative;white-space:nowrap}
+.nbtn:hover{background:rgba(255,255,255,.14)}
+.nbtn svg{width:15px;height:15px;fill:#fff}
+.cbadge{position:absolute;top:0;right:0;background:var(--a);color:#fff;font-size:9px;font-weight:700;width:15px;height:15px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+/* CATS */
+.cats{background:#fff;display:flex;border-bottom:1px solid var(--b);padding:0 20px;overflow-x:auto;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cat{padding:10px 22px;font-size:12px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;color:#444}
+.cat.on{border-bottom-color:var(--p);color:var(--p);font-weight:600}
+
+/* PAGES */
+.pg{display:none}.pg.on{display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:14px}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr 240px;gap:10px;margin-bottom:14px}
+.hc{border-radius:var(--r);overflow:hidden;min-height:170px;cursor:pointer;position:relative;display:flex;align-items:flex-end;transition:transform .18s}
+.hc:hover{transform:translateY(-2px)}
+.hc img{position:absolute;right:0;top:0;width:48%;height:100%;object-fit:cover}
+.htxt{padding:16px;z-index:1;width:58%}
+.htxt b{font-family:'Syne',sans-serif;font-size:17px;display:block;margin-bottom:3px}
+.htxt small{font-size:11px;opacity:.8;display:block;margin-bottom:5px}
+.htxt s{font-family:'Syne',sans-serif;font-size:15px;font-weight:700}
+.h1{background:linear-gradient(135deg,#0c0c0c,#002756,#00447c);color:#fff}
+.h2{background:linear-gradient(135deg,#d5e8f0,#9bbfd4);color:#002756}
+.h3{background:linear-gradient(160deg,#0b7b9e,#035b7a);color:#fff}
+
+/* SECTION */
+.sec{background:#fff;border-radius:var(--r);border:1px solid var(--b);margin-bottom:14px;overflow:hidden}
+.sec-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--b)}
+.sec-hd h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700}
+.sec-hd h3 em{color:var(--p);font-style:normal}
+.sec-hd button{background:var(--p);color:#fff;border:none;border-radius:20px;padding:5px 14px;font-size:11px;font-weight:600;cursor:pointer}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr)}
+
+/* PRODUCT CARD */
+.pc{padding:12px;border-right:1px solid var(--b);border-top:1px solid var(--b);cursor:pointer;text-align:center;transition:background .15s}
+.pc:nth-child(4n){border-right:none}
+.pc:hover{background:#eef4f8}
+.pc img{width:100%;height:130px;object-fit:cover;border-radius:5px;background:#f2f3f4;display:block;margin-bottom:8px}
+.pc .pn{font-size:12px;font-weight:600;margin-bottom:2px;line-height:1.3}
+.pc .pb{font-size:10px;color:#888;margin-bottom:4px}
+.pc .pp{font-size:14px;font-weight:700;color:#0c0c0c}
+.pc .po{font-size:10px;font-weight:600;color:#035b7a}
+.pc .pr{display:inline-block;background:var(--p);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-top:3px}
+
+/* CAT GRID */
+.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cpg-hd{background:#fff;border-radius:var(--r);padding:16px 20px;margin-bottom:12px;border:1px solid var(--b)}
+.cpg-hd h2{font-family:'Syne',sans-serif;font-size:19px;color:#002756}
+.cpg-hd p{font-size:12px;color:#888;margin-top:2px}
+.cpc{background:#fff;border-radius:var(--r);border:1px solid var(--b);padding:12px;cursor:pointer;text-align:center;transition:box-shadow .15s,transform .15s}
+.cpc:hover{box-shadow:0 3px 14px rgba(0,39,86,.15);transform:translateY(-2px)}
+.cpc img{width:100%;height:140px;object-fit:cover;border-radius:5px;background:#f2f3f4;display:block;margin-bottom:8px}
+.cpc .pn{font-size:12px;font-weight:600;margin-bottom:2px;line-height:1.3}
+.cpc .pb{font-size:10px;color:#888;margin-bottom:4px}
+.cpc .pp{font-size:14px;font-weight:700;color:#0c0c0c}
+.cpc .po{font-size:10px;font-weight:600;color:#035b7a}
+.cpc .pr{display:inline-block;background:var(--p);color:#fff;font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-top:3px}
+.cpc .acb{margin-top:7px;width:100%;padding:5px;background:none;border:1.5px solid var(--p);color:var(--p);border-radius:4px;font-size:11px;font-weight:600;cursor:pointer}
+.cpc .acb:hover{background:var(--p);color:#fff}
+
+/* MODAL */
+.ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;align-items:center;justify-content:center;padding:16px}
+.ov.on{display:flex}
+.mbox{background:#fff;border-radius:12px;width:720px;max-width:96vw;max-height:92vh;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;animation:pop .22s ease}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.mleft{background:#f2f3f4;display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
+.mleft img{width:100%;max-height:300px;object-fit:contain}
+.mclose{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(0,39,86,.12);border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+.mright{padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:10px}
+.mbrand{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--a)}
+.mname{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;line-height:1.3;color:#0c0c0c}
+.mrat{display:inline-block;background:var(--p);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px}
+.mprice{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:#0c0c0c}
+.morig{font-size:14px;color:#aaa;margin-left:6px}
+.moff{font-size:13px;font-weight:700;color:#035b7a;margin-left:4px}
+.mdesc{font-size:12px;color:#555;line-height:1.7;border-top:1px solid var(--b);padding-top:10px}
+.mfeats{list-style:none;font-size:12px;color:#555;display:flex;flex-direction:column;gap:4px}
+.mfeats li::before{content:'✓ ';color:var(--a);font-weight:700}
+.mbuy{padding:11px;background:var(--p);color:#fff;border:none;border-radius:var(--r);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
+.mbuy:hover{background:var(--pd)}
+.madd{padding:11px;background:#fff;color:var(--a);border:2px solid var(--a);border-radius:var(--r);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
+.madd:hover{background:var(--a);color:#fff}
+
+/* CART */
+.cart-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+.cart-ov.on{display:block}
+.cart{position:fixed;top:0;right:-380px;width:360px;height:100vh;background:#fff;z-index:160;display:flex;flex-direction:column;transition:right .28s;box-shadow:-3px 0 20px rgba(0,39,86,.15)}
+.cart.on{right:0}
+.cart-hd{background:var(--p);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.cart-hd h3{font-family:'Syne',sans-serif;font-size:15px}
+.cart-hd button{background:none;border:none;color:#fff;font-size:20px;cursor:pointer}
+.cart-body{flex:1;overflow-y:auto;padding:14px}
+.cart-empty{height:100%;display:flex;align-items:center;justify-content:center;color:#aaa;font-size:14px}
+.ci{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--b)}
+.ci img{width:54px;height:54px;object-fit:cover;border-radius:5px;background:#f2f3f4;flex-shrink:0}
+.ci-info{flex:1}
+.ci-info .n{font-size:12px;font-weight:600;margin-bottom:3px}
+.ci-info .pr{font-size:13px;font-weight:700;color:var(--p)}
+.ci-qty{display:flex;align-items:center;gap:6px;margin-top:5px}
+.qb{width:22px;height:22px;border:1px solid var(--b);background:#f2f3f4;border-radius:3px;cursor:pointer;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.ci .rm{background:none;border:none;color:#035b7a;font-size:10px;font-weight:600;cursor:pointer;align-self:flex-start;margin-left:auto}
+.cart-ft{padding:12px 16px;border-top:1px solid var(--b);background:#f2f3f4}
+.cart-tot{display:flex;justify-content:space-between;font-size:14px;font-weight:700;margin-bottom:10px}
+.cart-tot span:last-child{color:var(--p)}
+.cko{width:100%;padding:11px;background:var(--a);color:#fff;border:none;border-radius:var(--r);font-family:'Syne',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
+
+/* FOOTER */
+footer{background:#0c0c0c;color:#6a7a8a;padding:24px 20px 14px;margin-top:24px}
+.fgrid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:20px}
+footer h4{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#c6c3b6;margin-bottom:10px}
+footer a{color:#6a7a8a;text-decoration:none;font-size:12px;display:block;margin-bottom:6px}
+footer a:hover{color:#dddace}
+.fbot{max-width:1200px;margin:0 auto;border-top:1px solid #1e2a35;padding-top:12px;display:flex;justify-content:space-between;font-size:11px;color:#3a4a5a;flex-wrap:wrap;gap:6px;align-items:center}
+.flogo{font-family:'Syne',sans-serif;font-size:16px;font-weight:800;color:#fff}
+.flogo span{color:#0b7b9e}
+
+/* TOAST */
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(60px);background:#002756;color:#fff;padding:9px 20px;border-radius:30px;font-size:13px;z-index:300;transition:transform .3s,opacity .3s;opacity:0;pointer-events:none}
+.toast.on{transform:translateX(-50%) translateY(0);opacity:1}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="go('home')">Rem<span>Ze</span></div>
+  <div class="search-wrap">
+    <input id="si" placeholder="Search products, brands…" oninput="search(this.value)" onkeydown="if(event.key==='Enter')search(this.value,1)"/>
+    <button onclick="search(document.getElementById('si').value,1)">Search</button>
+  </div>
+  <div class="nav-btns">
+    <button class="nbtn" onclick="alert('Login coming soon!')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>Login</button>
+    <button class="nbtn" onclick="openCart()"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>Cart<span class="cbadge" id="cb">0</span></button>
+  </div>
+</nav>
+
+<div class="cats">
+  <div class="cat on" id="t-home" onclick="go('home')">For You</div>
+  <div class="cat" id="t-fashion" onclick="go('fashion')">Fashion</div>
+  <div class="cat" id="t-mobiles" onclick="go('mobiles')">Mobiles</div>
+  <div class="cat" id="t-electronics" onclick="go('electronics')">Electronics</div>
+  <div class="cat" id="t-homecat" onclick="go('homecat')">Home</div>
+</div>
+
+<!-- HOME -->
+<div class="pg on" id="pg-home"><div class="wrap">
+  <div class="hero">
+    <div class="hc h1" onclick="openModal(4)"><img src="img/charge5.jpg" alt=""/><div class="htxt"><small>JBL × REMZE</small><b>Charge 5</b><small>Win iPhone 16 | Sale Live</small>From ₹14,999</div></div>
+    <div class="hc h2" onclick="openModal(0)"><img src="img/boat141.jpg" alt=""/><div class="htxt"><small>BOAT · INDIA'S #1 BUDS</small><b>boAt Airdopes 141 TWS</b><small>AI assistant</small>From ₹2,999</div></div>
+    <div class="hc h3" onclick="go('fashion')"><img src="img/levis511.jpg" alt=""/><div class="htxt"><small>FASHION SALE</small><b>Branded Styles</b><small>Top brands · lowest prices</small>Min. 70% Off</div></div>
+  </div>
+  <div class="sec"><div class="sec-hd"><h3>Trending in <em>Fashion</em></h3><button onclick="go('fashion')">View All ›</button></div><div class="grid4" id="hf"></div></div>
+  <div class="sec"><div class="sec-hd"><h3>Best <em>Mobiles</em></h3><button onclick="go('mobiles')">View All ›</button></div><div class="grid4" id="hm"></div></div>
+  <div class="sec"><div class="sec-hd"><h3>Top <em>Electronics</em></h3><button onclick="go('electronics')">View All ›</button></div><div class="grid4" id="he"></div></div>
+  <div class="sec"><div class="sec-hd"><h3>For Your <em>Home</em></h3><button onclick="go('homecat')">View All ›</button></div><div class="grid4" id="hh"></div></div>
+</div></div>
+
+<!-- CATEGORY PAGES -->
+<div class="pg" id="pg-fashion"><div class="wrap"><div class="cpg-hd"><h2>Fashion</h2><p>Clothing, Footwear &amp; Accessories</p></div><div class="cgrid" id="gf"></div></div></div>
+<div class="pg" id="pg-mobiles"><div class="wrap"><div class="cpg-hd"><h2>Mobiles</h2><p>Smartphones &amp; Accessories</p></div><div class="cgrid" id="gm"></div></div></div>
+<div class="pg" id="pg-electronics"><div class="wrap"><div class="cpg-hd"><h2>Electronics</h2><p>Laptops, TVs, Audio &amp; More</p></div><div class="cgrid" id="ge"></div></div></div>
+<div class="pg" id="pg-homecat"><div class="wrap"><div class="cpg-hd"><h2>Home &amp; Living</h2><p>Kitchen, Furniture &amp; Décor</p></div><div class="cgrid" id="gh"></div></div></div>
+<div class="pg" id="pg-search"><div class="wrap"><div class="cpg-hd"><h2>Search Results</h2><p id="slabel"></p></div><div class="cgrid" id="gs"></div></div></div>
+
+<!-- PRODUCT MODAL -->
+<div class="ov" id="mov" onclick="if(event.target===this)closeModal()">
+  <div class="mbox">
+    <div class="mleft"><button class="mclose" onclick="closeModal()">✕</button><img id="mi" src="" alt=""/></div>
+    <div class="mright">
+      <div class="mbrand" id="mbrand"></div>
+      <div class="mname" id="mname"></div>
+      <div><span class="mrat">★ <span id="mrat"></span></span> <span style="font-size:11px;color:#888" id="mrev"></span></div>
+      <div><span class="mprice" id="mprice"></span><span class="morig" id="morig"></span><span class="moff" id="moff"></span></div>
+      <div class="mdesc" id="mdesc"></div>
+      <ul class="mfeats" id="mfeats"></ul>
+      <div style="font-size:11px;color:#555;background:#e8f0f7;padding:8px 10px;border-radius:5px">🚚 Free delivery · Easy 10-day returns</div>
+      <button class="mbuy" onclick="buyNow()">⚡ Buy Now</button>
+      <button class="madd" onclick="addCurrent()">🛒 Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- CART -->
+<div class="cart-ov" id="cov" onclick="closeCart()"></div>
+<div class="cart" id="cart">
+  <div class="cart-hd"><h3>🛒 My Cart</h3><button onclick="closeCart()">✕</button></div>
+  <div class="cart-body" id="cbody"><div class="cart-empty">Your cart is empty</div></div>
+  <div class="cart-ft" id="cft" style="display:none">
+    <div class="cart-tot"><span>Total</span><span id="ctot">₹0</span></div>
+    <button class="cko" onclick="alert('Checkout coming soon! 🚀')">Proceed to Checkout →</button>
+  </div>
+</div>
+
+<footer>
+  <div class="fgrid">
+    <div><h4>Company</h4><a href="about.html">About Us</a><a href="careers.html">Careers</a><a href="blog.html">Blog</a></div>
+    <div><h4>Help</h4><a href="track-order.html">Track Order</a><a href="returns.html">Returns</a><a href="faq.html">FAQ</a></div>
+    <div><h4>Legal</h4><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Use</a></div>
+    <div><h4>Follow Us</h4><a href="#">Instagram</a><a href="#">Twitter/X</a><a href="#">YouTube</a></div>
+  </div>
+  <div class="fbot"><div class="flogo">Rem<span>Ze</span></div><div>© 2026 RemZe Pvt. Ltd.</div><div>Made with ❤️</div></div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const P=[
+  {id:0,c:'electronics',n:'boAt Airdopes 141 TWS',b:'boAt',p:1299,o:4999,d:74,r:4.2,rv:'1.2L',img:'img/boat141.jpg',desc:'Truly wireless earbuds with 42hr playback, IPX4 water resistance and instant voice assistant.',f:['42hr total playback','IPX4 waterproof','USB-C charging','Signature boAt sound']},
+  {id:1,c:'electronics',n:'Sony WH-1000XM5',b:'Sony',p:24990,o:34990,d:29,r:4.6,rv:'48K',img:'img/sony-xm5.jpg',desc:'Industry-leading noise cancelling, 30hr battery, multipoint connection.',f:['ANC leader','30hr battery','Hi-Res Audio','Foldable design']},
+  {id:2,c:'electronics',n:'Samsung 55" 4K QLED TV',b:'Samsung',p:64999,o:89999,d:28,r:4.5,rv:'32K',img:'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/4649beaa-3217-4929-b7f0-d0153fc5c5d0.jpg',desc:'Quantum Dot colour, 4K HDR10+, Tizen OS with built-in streaming apps.',f:['Quantum Dot','4K HDR10+','Tizen Smart OS','Dolby Atmos']},
+  {id:3,c:'electronics',n:'Canon EOS 200D II',b:'Canon',p:44990,o:62990,d:29,r:4.4,rv:'18K',img:'img/canon-dslr.jpg',desc:'24.1MP APS-C, Dual Pixel CMOS AF, 4K video, vari-angle touchscreen.',f:['24.1MP sensor','4K video','Dual Pixel AF','Wi-Fi + Bluetooth']},
+  {id:4,c:'electronics',n:'JBL Charge 5 Speaker',b:'JBL',p:14999,o:19999,d:25,r:4.4,rv:'62K',img:'img/charge5.jpg',desc:'IP67 waterproof, 20hr battery, built-in power bank, PartyBoost compatible.',f:['IP67 waterproof','20hr playtime','Power bank built-in','PartyBoost']},
+  {id:5,c:'electronics',n:'Apple iPad 10th Gen',b:'Apple',p:34900,o:44900,d:22,r:4.6,rv:'55K',img:'https://i5.walmartimages.com/seo/2022-Apple-10-9-inch-iPad-Wi-Fi-256GB-Silver-10th-Generation_3c544028-8779-4d02-a43a-07c10390daaf.d0be7279a384075f8f6ae23eb4f9d711.jpeg',desc:'A14 Bionic chip, 10.9" Liquid Retina, all-day battery, USB-C.',f:['A14 Bionic','10.9" Retina','10hr battery','USB-C']},
+  {id:6,c:'electronics',n:'Logitech MX Master 3',b:'Logitech',p:7995,o:10995,d:27,r:4.7,rv:'28K',img:'img/logitech-mx3.jpg',desc:'MagSpeed scroll, 70-day battery, works on any surface, 3-device connect.',f:['MagSpeed scroll','70-day battery','Any surface','3 devices']},
+  {id:7,c:'electronics',n:'Mi Air Purifier 3',b:'Xiaomi',p:8999,o:12999,d:31,r:4.3,rv:'14K',img:'img/mi-purifier.jpg',desc:'HEPA+carbon filter, 484 sq ft coverage, real-time AQI, app control.',f:['HEPA filter','484 sq ft','Real-time AQI','Mi Home app']},
+  {id:8,c:'electronics',n:'Realme Smart TV 43"',b:'Realme',p:22999,o:32999,d:30,r:4.1,rv:'22K',img:'https://blogger.googleusercontent.com/img/a/AVvXsEivmz9cwiZj3pCk43isZ8z_UixjcPhQAPMSNp7USbRrm44w3IZHezY-LGw1OgoF0RIZ2Of__ErdncowwLTFe6PhZaF0p4dM7P3CHtHgdzl1RV2KkJK9DFb7t9HPn-i2lrG-qHBmAddBns6csijL5BNrwanqBE3gTGI3CUr-c6dtVQl4jbsqjVweZaNRaA=s16000',desc:'Full HD Android 11, Dolby Audio, Chroma Boost, hands-free voice control.',f:['Full HD 1080p','Android TV 11','Dolby Audio','3x HDMI 2.0']},
+  {id:9,c:'electronics',n:'GoPro HERO 12 Black',b:'GoPro',p:38990,o:49990,d:22,r:4.5,rv:'9K',img:'https://www.bitmag.com.br/wp-content/uploads/2023/09/gopro-hero12-black-anuncio.webp',desc:'5.3K60 video, HyperSmooth 6.0, 27MP, waterproof to 10m.',f:['5.3K60 video','HyperSmooth 6.0','27MP photos','10m waterproof']},
+  {id:10,c:'mobiles',n:'Samsung Galaxy S24 Ultra',b:'Samsung',p:124999,o:149999,d:17,r:4.7,rv:'85K',img:'img/samsung-s24ultra.jpg',desc:'200MP camera, S Pen, Snapdragon 8 Gen 3, 5000mAh 45W.',f:['200MP quad-cam','Built-in S Pen','Snapdragon 8 Gen 3','45W charging']},
+  {id:11,c:'mobiles',n:'iPhone 15 Pro',b:'Apple',p:129900,o:149900,d:13,r:4.8,rv:'120K',img:'img/iphone-15pro.jpg',desc:'A17 Pro chip, 48MP camera, 5× optical zoom, titanium build, USB 3.',f:['A17 Pro chip','48MP pro camera','5× optical zoom','Titanium frame']},
+  {id:12,c:'mobiles',n:'OnePlus 12R 5G',b:'OnePlus',p:39999,o:49999,d:20,r:4.5,rv:'42K',img:'img/oneplus-12r.jpg',desc:'Snapdragon 8 Gen 2, 120Hz 2K AMOLED, 5500mAh, 100W SUPERVOOC.',f:['Snapdragon 8 Gen 2','120Hz 2K display','5500mAh','100W charging']},
+  {id:13,c:'mobiles',n:'Xiaomi 14 5G',b:'Xiaomi',p:64999,o:79999,d:19,r:4.4,rv:'31K',img:'img/xiaomi-14.jpg',desc:'Snapdragon 8 Gen 3, Leica triple camera, 90W HyperCharge, IP68.',f:['Leica triple cam','Snapdragon 8 Gen 3','90W charging','IP68 rated']},
+  {id:14,c:'mobiles',n:'Realme Narzo 70 Pro',b:'Realme',p:19999,o:25999,d:23,r:4.2,rv:'18K',img:'https://i.gadgets360cdn.com/large/realme_narzo_70_pro_5g_realme_1_1710831297601.jpg',desc:'Dimensity 7050, 50MP Sony IMX890, 5000mAh, 67W SuperDart.',f:['Dimensity 7050','50MP Sony cam','5000mAh','67W charging']},
+  {id:15,c:'mobiles',n:'Vivo V30 5G',b:'Vivo',p:29999,o:37999,d:21,r:4.3,rv:'24K',img:'img/vivo-v30.jpg',desc:'Aura Light portrait, 50MP front cam, Snapdragon 7 Gen 3, 80W charge.',f:['Aura Light portrait','50MP selfie cam','Snapdragon 7 Gen 3','80W charging']},
+  {id:16,c:'mobiles',n:'Google Pixel 8a',b:'Google',p:52999,o:62999,d:16,r:4.6,rv:'29K',img:'https://static1.anpoimages.com/wordpress/wp-content/uploads/2024/05/google-pixel-8a-announcement-1.jpg',desc:'Tensor G3, 7 years updates, 64MP camera, Magic Eraser, IP67.',f:['Tensor G3 chip','7yr OS updates','64MP camera','IP67 rated']},
+  {id:17,c:'mobiles',n:'Nothing Phone (2a)',b:'Nothing',p:24999,o:29999,d:17,r:4.4,rv:'36K',img:'img/nothing-2a.jpg',desc:'Dimensity 7200 Pro, Glyph Interface, 50MP dual cam, 45W fast charge.',f:['Glyph Interface','Dimensity 7200 Pro','50MP dual cam','45W charging']},
+  {id:18,c:'mobiles',n:'Motorola Edge 50 Fusion',b:'Motorola',p:21999,o:27999,d:21,r:4.1,rv:'15K',img:'img/moto-edge50.jpg',desc:'Snapdragon 7s Gen 2, 144Hz pOLED, 68W TurboPower, vegan leather.',f:['Snapdragon 7s Gen 2','144Hz pOLED','68W TurboPower','50MP OIS cam']},
+  {id:19,c:'mobiles',n:'POCO X6 Pro 5G',b:'POCO',p:26999,o:34999,d:23,r:4.3,rv:'19K',img:'img/poco-x6pro.jpg',desc:'Dimensity 8300-Ultra, 64MP OIS, 67W turbo, 120Hz AMOLED.',f:['Dimensity 8300-Ultra','64MP OIS cam','67W turbo charge','120Hz AMOLED']},
+  {id:20,c:'fashion',n:"Levi's 511 Slim Jeans",b:"Levi's",p:2499,o:4499,d:44,r:4.5,rv:'95K',img:'img/levis511.jpg',desc:"Classic 511 slim fit in stretch denim. Sits below waist, slim through thigh.",f:['Stretch denim','Slim fit','5-pocket','Machine washable']},
+  {id:21,c:'fashion',n:'Nike Air Max 270',b:'Nike',p:9995,o:14999,d:33,r:4.6,rv:'78K',img:'img/nike270.jpg',desc:'Max Air 270 heel cushioning, breathable mesh, foam midsole.',f:['Max Air 270 unit','Breathable mesh','Foam midsole','UK sizes 6-12']},
+  {id:22,c:'fashion',n:'Allen Solly Formal Shirt',b:'Allen Solly',p:1299,o:2499,d:48,r:4.3,rv:'56K',img:'img/allens.jpg',desc:'Premium cotton formal shirt, regular fit, wrinkle-resistant.',f:['100% premium cotton','Regular fit','Wrinkle-resistant','Machine washable']},
+  {id:23,c:'fashion',n:"H&M Women's Midi Dress",b:'H&M',p:1799,o:3499,d:49,r:4.4,rv:'41K',img:'img/hmdress.jpg',desc:'Floral midi dress, V-neck, smocked bodice, puff sleeves.',f:['Soft woven fabric','Smocked bodice','Puff sleeves','Midi length']},
+  {id:24,c:'fashion',n:'Wildcraft Urban Pro Backpack',b:'Wildcraft',p:1999,o:3499,d:43,r:4.4,rv:'33K',img:'https://www.mangostationery.com/cdn/shop/files/original-imagy9gvhbmhr6gg_534x700.webp?v=1716381454',desc:'32L, 16" laptop compartment, rain cover, ergonomic straps.',f:['32L capacity','Fits 16" laptop','Rain cover','Ergonomic straps']},
+  {id:25,c:'fashion',n:'Fastrack Analog Watch',b:'Fastrack',p:1795,o:2995,d:40,r:4.2,rv:'88K',img:'img/fastrack-watch.jpg',desc:'Stainless steel case, leather strap, water resistant 30m.',f:['SS case','Leather strap','30m water resistant','2yr warranty']},
+  {id:26,c:'fashion',n:"Puma Men's DryCELL Tee",b:'Puma',p:799,o:1499,d:47,r:4.3,rv:'110K',img:'img/puma-tee.jpg',desc:'DryCELL moisture-wicking jersey, regular fit, embossed Cat logo.',f:['DryCELL wicking','Lightweight jersey','Regular fit','Machine washable']},
+  {id:27,c:'fashion',n:'Adidas Ultraboost 22',b:'Adidas',p:14999,o:20999,d:29,r:4.7,rv:'64K',img:'https://sneakernews.com/wp-content/uploads/2021/12/adidas-UltraBOOST-22-GX3061-0.jpg?w=1140',desc:'BOOST cushioning, Primeknit+ upper, Continental rubber outsole.',f:['BOOST midsole','Primeknit+ upper','Continental outsole','Recycled materials']},
+  {id:28,c:'fashion',n:"W Women's Kurta Set",b:'W',p:1599,o:2999,d:47,r:4.5,rv:'48K',img:'img/w-kurta.jpg',desc:'Printed cotton kurta with palazzo pants, block print motifs.',f:['100% cotton','With palazzo pants','Block print','Comfortable fit']},
+  {id:29,c:'fashion',n:'Ray-Ban Wayfarer',b:'Ray-Ban',p:7490,o:9990,d:25,r:4.6,rv:'37K',img:'img/rayban-wayfarer.jpg',desc:'Iconic Wayfarer, UV400, G-15 green lenses, classic acetate frame.',f:['UV400 protection','G-15 lenses','Acetate frame','Unisex']},
+  {id:30,c:'homecat',n:'Prestige 750W Mixer Grinder',b:'Prestige',p:2999,o:4999,d:40,r:4.4,rv:'92K',img:'img/prestige-mixer.jpg',desc:'750W copper motor, 3 SS jars, overload protection, 5yr warranty.',f:['750W motor','3 SS jars','Overload protection','5yr warranty']},
+  {id:31,c:'homecat',n:'Godrej 236L Double Door Fridge',b:'Godrej',p:22999,o:32999,d:30,r:4.3,rv:'28K',img:'https://cdn.jiostore.online/v2/jmd-asp/jdprod/wrkr/products/pictures/item/free/resize-w:450/godrej/492579461/3/rb37zFhay3-t2Y0BF93d8M-Godrej-FF-236-2S-RF-EON-236B-25-Refrigerator-492579461-i-4-1200Wx1200H.jpeg',desc:'Frost-free, 3-star BEE, inverter compressor, FreshShield crisper.',f:['Frost-free','3-star BEE','Inverter compressor','FreshShield']},
+  {id:32,c:'homecat',n:'Philips Air Fryer HD9200',b:'Philips',p:6999,o:9999,d:30,r:4.5,rv:'71K',img:'img/philips-airfryer.jpg',desc:'Rapid Air tech, 90% less fat, 4.1L, 7 presets, dishwasher-safe basket.',f:['Rapid Air tech','90% less fat','4.1L capacity','Dishwasher safe']},
+  {id:33,c:'homecat',n:'Havells Octet 1200mm Fan',b:'Havells',p:3299,o:4999,d:34,r:4.4,rv:'43K',img:'img/havells-fan.jpg',desc:'BLDC motor, 5-star BEE, remote with 6-speed + timer, gloss finish.',f:['BLDC motor','5-star BEE','Remote control','Timer function']},
+  {id:34,c:'homecat',n:'Bosch 6kg Front Load Washer',b:'Bosch',p:34999,o:47999,d:27,r:4.6,rv:'37K',img:'img/bosch-washer.jpg',desc:'EcoSilence Drive, ActiveWater tech, SpeedPerfect, 15 programmes.',f:['EcoSilence Drive','ActiveWater','SpeedPerfect','5yr motor warranty']},
+  {id:35,c:'homecat',n:'Cello Opalware Dinner Set 35pc',b:'Cello',p:1799,o:2999,d:40,r:4.3,rv:'52K',img:'img/cello-dinnerset.jpg',desc:'35-piece opalware, break-resistant, dishwasher & microwave safe.',f:['35-piece set','Break-resistant','Dishwasher safe','Microwave safe']},
+  {id:36,c:'homecat',n:'IKEA KALLAX Shelf Unit',b:'IKEA',p:7990,o:10999,d:27,r:4.5,rv:'23K',img:'https://www.ikea.com/us/en/images/products/kallax-shelf-unit-white__1031125_pe836445_s5.jpg?f=undefined',desc:'4-compartment shelf, room divider or TV unit, KALLAX insert compatible.',f:['4 compartments','Room divider','Insert compatible','13kg per shelf']},
+  {id:37,c:'homecat',n:'Pigeon Non-Stick 5pc Set',b:'Pigeon',p:1299,o:2499,d:48,r:4.2,rv:'67K',img:'img/pigeon-cookware.jpg',desc:'5-piece non-stick aluminium set, induction compatible, dishwasher safe.',f:['5-piece set','Non-stick aluminium','Induction compatible','Dishwasher safe']},
+  {id:38,c:'homecat',n:'Nilkamal 4-Shelf Bookcase',b:'Nilkamal',p:4499,o:6999,d:36,r:4.1,rv:'9K',img:'img/nilkamal-shelf.jpg',desc:'4 adjustable shelves, 80kg load, warm oak laminate, easy assembly.',f:['4 adjustable shelves','80kg load','Oak laminate','Easy assembly']},
+  {id:39,c:'homecat',n:'Solimo 3-Seater Fabric Sofa',b:'Solimo',p:19999,o:29999,d:33,r:4.2,rv:'14K',img:'img/solimo-sofa.jpg',desc:'High-density foam, solid wood legs, removable cushions, assembly included.',f:['HD foam cushions','Solid wood legs','Removable cushions','Assembly included']},
+];
+const fmt=n=>'₹'+n.toLocaleString('en-IN');
+let cart=[],cur=null;
+
+// Render helpers
+const hCard=p=>`<div class="pc" onclick="openModal(${p.id})"><img src="${p.img}" alt=""/><div class="pb">${p.b}</div><div class="pn">${p.n}</div><div class="pp">${fmt(p.p)} <span class="po">${p.d}% off</span></div><span class="pr">★ ${p.r}</span></div>`;
+const cCard=p=>`<div class="cpc" onclick="openModal(${p.id})"><img src="${p.img}" alt=""/><div class="pb">${p.b}</div><div class="pn">${p.n}</div><div class="pp">${fmt(p.p)} <span class="po">${p.d}% off</span></div><span class="pr">★ ${p.r}</span><button class="acb" onclick="event.stopPropagation();addById(${p.id})">+ Add to Cart</button></div>`;
+const byc=c=>P.filter(p=>p.c===c);
+
+function init(){
+  document.getElementById('hf').innerHTML=byc('fashion').slice(0,4).map(hCard).join('');
+  document.getElementById('hm').innerHTML=byc('mobiles').slice(0,4).map(hCard).join('');
+  document.getElementById('he').innerHTML=byc('electronics').slice(0,4).map(hCard).join('');
+  document.getElementById('hh').innerHTML=byc('homecat').slice(0,4).map(hCard).join('');
+  document.getElementById('gf').innerHTML=byc('fashion').map(cCard).join('');
+  document.getElementById('gm').innerHTML=byc('mobiles').map(cCard).join('');
+  document.getElementById('ge').innerHTML=byc('electronics').map(cCard).join('');
+  document.getElementById('gh').innerHTML=byc('homecat').map(cCard).join('');
+}
+init();
+
+function go(pg){
+  document.querySelectorAll('.pg').forEach(e=>e.classList.remove('on'));
+  document.querySelectorAll('.cat').forEach(e=>e.classList.remove('on'));
+  document.getElementById('pg-'+pg).classList.add('on');
+  const t=document.getElementById('t-'+pg);if(t)t.classList.add('on');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function search(q,commit){
+  if(!q.trim())return;
+  if(!commit)return;
+  const res=P.filter(p=>p.n.toLowerCase().includes(q.toLowerCase())||p.b.toLowerCase().includes(q.toLowerCase()));
+  document.getElementById('slabel').textContent=res.length+' result(s) for "'+q+'"';
+  document.getElementById('gs').innerHTML=res.length?res.map(cCard).join(''):'<p style="grid-column:1/-1;padding:30px;text-align:center;color:#888">No results found.</p>';
+  go('search');
+}
+
+function openModal(id){
+  const p=P.find(x=>x.id===id);if(!p)return;cur=p;
+  ['mi','mbrand','mname','mrat','mrev','mprice','morig','moff','mdesc'].forEach(k=>{});
+  document.getElementById('mi').src=p.img;
+  document.getElementById('mbrand').textContent=p.b;
+  document.getElementById('mname').textContent=p.n;
+  document.getElementById('mrat').textContent=p.r;
+  document.getElementById('mrev').textContent='('+p.rv+' ratings)';
+  document.getElementById('mprice').textContent=fmt(p.p);
+  document.getElementById('morig').textContent=fmt(p.o);
+  document.getElementById('moff').textContent=p.d+'% off';
+  document.getElementById('mdesc').textContent=p.desc;
+  document.getElementById('mfeats').innerHTML=p.f.map(f=>`<li>${f}</li>`).join('');
+  document.getElementById('mov').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeModal(){document.getElementById('mov').classList.remove('on');document.body.style.overflow='';cur=null;}
+function addCurrent(){if(cur){addById(cur.id);closeModal();}}
+function buyNow(){if(cur){addById(cur.id);closeModal();openCart();}}
+
+function addById(id){
+  const p=P.find(x=>x.id===id);if(!p)return;
+  const ex=cart.find(i=>i.id===id);
+  ex?ex.qty++:cart.push({...p,qty:1});
+  renderCart();toast(p.n+' added!');
+}
+function remById(id){cart=cart.filter(i=>i.id!==id);renderCart();}
+function chQty(id,d){const i=cart.find(x=>x.id===id);if(!i)return;i.qty+=d;if(i.qty<=0)remById(id);else renderCart();}
+
+function renderCart(){
+  const tot=cart.reduce((s,i)=>s+i.p*i.qty,0),cnt=cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cb').textContent=cnt;
+  document.getElementById('ctot').textContent=fmt(tot);
+  const ft=document.getElementById('cft');
+  if(!cart.length){document.getElementById('cbody').innerHTML='<div class="cart-empty">Your cart is empty</div>';ft.style.display='none';return;}
+  ft.style.display='block';
+  document.getElementById('cbody').innerHTML=cart.map(i=>`<div class="ci"><img src="${i.img}" alt=""/><div class="ci-info"><div class="n">${i.n}</div><div class="pr">${fmt(i.p)}</div><div class="ci-qty"><button class="qb" onclick="chQty(${i.id},-1)">−</button><span>${i.qty}</span><button class="qb" onclick="chQty(${i.id},1)">+</button></div></div><button class="rm" onclick="remById(${i.id})">✕</button></div>`).join('');
+}
+
+function openCart(){document.getElementById('cov').classList.add('on');document.getElementById('cart').classList.add('on');document.body.style.overflow='hidden';}
+function closeCart(){document.getElementById('cov').classList.remove('on');document.getElementById('cart').classList.remove('on');document.body.style.overflow='';}
+
+let tt;
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('on'),2200);}
+</script>
+</body>
+</html>

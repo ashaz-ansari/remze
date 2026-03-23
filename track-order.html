@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Track Order – RemZe</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f2f3f4;color:#212121}
+nav{background:#00447c;padding:0 24px;height:52px;display:flex;align-items:center;gap:16px}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#fff;text-decoration:none}
+.logo span{color:#0b7b9e}
+nav a{color:#cde0ff;font-size:13px;text-decoration:none}
+nav a:hover{color:#fff}
+.wrap{max-width:700px;margin:0 auto;padding:40px 20px}
+h1{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#002756;margin-bottom:6px}
+.sub{font-size:14px;color:#888;margin-bottom:28px}
+.card{background:#fff;border-radius:8px;border:1px solid #dddace;padding:28px 32px;margin-bottom:20px}
+.card h2{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#002756;margin-bottom:16px}
+.form-row{display:flex;gap:10px;margin-bottom:12px}
+.form-row input{flex:1;padding:11px 14px;border:1.5px solid #dddace;border-radius:6px;font-size:14px;font-family:'DM Sans',sans-serif;outline:none;color:#212121}
+.form-row input:focus{border-color:#00447c}
+.form-row button{background:#00447c;color:#fff;border:none;border-radius:6px;padding:11px 22px;font-size:14px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}
+.form-row button:hover{background:#002756}
+#result{display:none}
+.order-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:8px}
+.order-hd .oid{font-size:13px;color:#888}
+.order-hd .ostatus{background:#0b7b9e;color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:#dddace}
+.step{position:relative;margin-bottom:20px}
+.step:last-child{margin-bottom:0}
+.dot{position:absolute;left:-28px;top:3px;width:18px;height:18px;border-radius:50%;border:2px solid #dddace;background:#fff;display:flex;align-items:center;justify-content:center;font-size:9px}
+.step.done .dot{background:#00447c;border-color:#00447c;color:#fff}
+.step.active .dot{background:#0b7b9e;border-color:#0b7b9e;color:#fff;box-shadow:0 0 0 3px rgba(11,123,158,.2)}
+.step h4{font-size:14px;font-weight:600;color:#212121;margin-bottom:2px}
+.step.done h4{color:#888}
+.step p{font-size:12px;color:#aaa}
+.step.active h4{color:#0b7b9e}
+.order-item{display:flex;gap:12px;padding:14px 0;border-top:1px solid #f0f0ec;margin-top:16px}
+.order-item img{width:56px;height:56px;background:#f2f3f4;border-radius:6px;object-fit:cover;flex-shrink:0}
+.order-item .info .name{font-size:13px;font-weight:600;margin-bottom:2px}
+.order-item .info .det{font-size:12px;color:#888}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.info-box{background:#e8f0f7;border-radius:6px;padding:14px}
+.info-box .lbl{font-size:11px;font-weight:700;color:#00447c;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.info-box .val{font-size:13px;color:#212121}
+footer{background:#0c0c0c;color:#6a7a8a;text-align:center;padding:18px;font-size:12px;margin-top:40px}
+footer a{color:#0b7b9e;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+   <a class="logo" href="remze.html">Rem<span>Ze</span></a>
+  <a href="remze.html">← Back to Store</a>
+</nav>
+<div class="wrap">
+  <h1>Track Your Order</h1>
+  <p class="sub">Enter your order ID or the email used at checkout.</p>
+
+  <div class="card">
+    <h2>Find your order</h2>
+    <div class="form-row">
+      <input type="text" id="orderInput" placeholder="Order ID (e.g. RMZ-2026-48291) or email"/>
+      <button onclick="trackOrder()">Track</button>
+    </div>
+    <p style="font-size:12px;color:#aaa">Try: <strong style="cursor:pointer;color:#00447c" onclick="document.getElementById('orderInput').value='RMZ-2026-48291'">RMZ-2026-48291</strong></p>
+  </div>
+
+  <div class="card" id="result">
+    <div class="order-hd">
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:#002756">Order #RMZ-2026-48291</div>
+        <div class="oid">Placed on March 17, 2026</div>
+      </div>
+      <span class="ostatus">Out for Delivery</span>
+    </div>
+
+    <div class="timeline">
+      <div class="step done"><div class="dot">✓</div><h4>Order Placed</h4><p>March 17, 2026 · 11:34 AM</p></div>
+      <div class="step done"><div class="dot">✓</div><h4>Payment Confirmed</h4><p>March 17, 2026 · 11:35 AM</p></div>
+      <div class="step done"><div class="dot">✓</div><h4>Packed &amp; Dispatched</h4><p>March 18, 2026 · 9:20 AM · Bengaluru Hub</p></div>
+      <div class="step active"><div class="dot">→</div><h4>Out for Delivery</h4><p>March 20, 2026 · Expected by 7:00 PM</p></div>
+      <div class="step"><div class="dot"></div><h4>Delivered</h4><p>Pending</p></div>
+    </div>
+
+    <div class="order-item">
+      <img src="https://placehold.co/56x56/e3f2fd/1565c0?text=Item" alt=""/>
+      <div class="info">
+        <div class="name">boAt Airdopes 141 TWS Earbuds</div>
+        <div class="det">Qty: 1 · ₹1,299 · Black</div>
+      </div>
+    </div>
+
+    <div class="info-grid" style="margin-top:16px">
+      <div class="info-box"><div class="lbl">Delivery Address</div><div class="val">42, MG Road, Bengaluru 560001</div></div>
+      <div class="info-box"><div class="lbl">Delivery Agent</div><div class="val">Raju K. · 📞 +91 98XXX XXXXX</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function trackOrder(){
+  const v=document.getElementById('orderInput').value.trim();
+  if(!v){alert('Please enter an Order ID or email.');return;}
+  document.getElementById('result').style.display='block';
+  document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+<footer>© 2026 RemZe Private Limited · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></footer>
+</body>
+</html>

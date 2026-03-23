@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Blog – RemZe</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f2f3f4;color:#212121}
+nav{background:#00447c;padding:0 24px;height:52px;display:flex;align-items:center;gap:16px}
+.logo{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:#fff;text-decoration:none}
+.logo span{color:#0b7b9e}
+nav a{color:#cde0ff;font-size:13px;text-decoration:none}
+nav a:hover{color:#fff}
+.wrap{max-width:900px;margin:0 auto;padding:40px 20px}
+h1{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:#002756;margin-bottom:6px}
+.sub{font-size:14px;color:#888;margin-bottom:28px}
+.featured{background:linear-gradient(135deg,#002756,#00447c);border-radius:10px;padding:36px 32px;color:#fff;margin-bottom:28px;cursor:pointer;transition:transform .18s}
+.featured:hover{transform:translateY(-2px)}
+.featured .ftag{background:#0b7b9e;color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;display:inline-block;margin-bottom:12px}
+.featured h2{font-family:'Syne',sans-serif;font-size:24px;font-weight:700;margin-bottom:10px;line-height:1.3}
+.featured p{font-size:14px;opacity:.8;line-height:1.7;max-width:600px}
+.featured .meta{font-size:12px;opacity:.6;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.post{background:#fff;border-radius:8px;border:1px solid #dddace;overflow:hidden;cursor:pointer;transition:box-shadow .18s,transform .18s}
+.post:hover{box-shadow:0 4px 16px rgba(0,39,86,.14);transform:translateY(-2px)}
+.post-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:36px}
+.p1{background:linear-gradient(135deg,#e8f0f7,#c6dbe8)}
+.p2{background:linear-gradient(135deg,#fff3e0,#ffe0b2)}
+.p3{background:linear-gradient(135deg,#f3e5f5,#e1bee7)}
+.p4{background:linear-gradient(135deg,#e8f5e9,#c8e6c9)}
+.p5{background:linear-gradient(135deg,#fce4ec,#f8bbd0)}
+.p6{background:linear-gradient(135deg,#e8eaf6,#c5cae9)}
+.post-body{padding:14px}
+.post-body .tag{font-size:10px;font-weight:700;color:#0b7b9e;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.post-body h3{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;line-height:1.35;margin-bottom:5px;color:#0c0c0c}
+.post-body p{font-size:12px;color:#666;line-height:1.5;margin-bottom:8px}
+.post-body .meta{font-size:11px;color:#aaa}
+.newsletter{background:#fff;border-radius:8px;border:1px solid #dddace;padding:28px 32px;text-align:center}
+.newsletter h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#002756;margin-bottom:6px}
+.newsletter p{font-size:13px;color:#666;margin-bottom:16px}
+.nl-form{display:flex;gap:8px;max-width:400px;margin:0 auto}
+.nl-form input{flex:1;padding:10px 14px;border:1.5px solid #dddace;border-radius:6px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
+.nl-form input:focus{border-color:#00447c}
+.nl-form button{background:#00447c;color:#fff;border:none;border-radius:6px;padding:10px 18px;font-size:13px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer}
+footer{background:#0c0c0c;color:#6a7a8a;text-align:center;padding:18px;font-size:12px;margin-top:40px}
+footer a{color:#0b7b9e;text-decoration:none}
+</style>
+</head>
+<body>
+<nav>
+   <a class="logo" href="remze.html">Rem<span>Ze</span></a>
+  <a href="remze.html">← Back to Store</a>
+</nav>
+<div class="wrap">
+  <h1>RemZe Blog</h1>
+  <p class="sub">Shopping tips, deal guides, product reviews and more.</p>
+
+  <div class="featured">
+    <span class="ftag">FEATURED</span>
+    <h2>Top 10 Tech Deals You Can't Miss This Month</h2>
+    <p>From flagship smartphones to budget laptops, we've rounded up the best deals across electronics this month. Don't let these slip by.</p>
+    <div class="meta">By RemZe Editorial · March 18, 2026 · 5 min read</div>
+  </div>
+
+  <div class="grid">
+    <div class="post"><div class="post-img p1">👟</div><div class="post-body"><div class="tag">Fashion</div><h3>How to Build a Capsule Wardrobe on a Budget</h3><p>10 essential pieces that work for any occasion.</p><div class="meta">Mar 15, 2026 · 4 min</div></div></div>
+    <div class="post"><div class="post-img p2">📱</div><div class="post-body"><div class="tag">Mobiles</div><h3>Flagship vs Mid-Range: Which Phone is Right for You?</h3><p>A practical breakdown of what you actually get.</p><div class="meta">Mar 12, 2026 · 6 min</div></div></div>
+    <div class="post"><div class="post-img p3">🏠</div><div class="post-body"><div class="tag">Home</div><h3>5 Kitchen Upgrades Under ₹2,000</h3><p>Small buys that make a big difference every day.</p><div class="meta">Mar 10, 2026 · 3 min</div></div></div>
+    <div class="post"><div class="post-img p4">💻</div><div class="post-body"><div class="tag">Electronics</div><h3>Best Laptops for Students in 2026</h3><p>Power, portability, and price — we tested them all.</p><div class="meta">Mar 8, 2026 · 7 min</div></div></div>
+    <div class="post"><div class="post-img p5">🎧</div><div class="post-body"><div class="tag">Electronics</div><h3>Noise Cancelling Headphones: Buyer's Guide</h3><p>Everything you need to know before buying.</p><div class="meta">Mar 5, 2026 · 5 min</div></div></div>
+    <div class="post"><div class="post-img p6">🛍️</div><div class="post-body"><div class="tag">Tips</div><h3>How to Always Get the Best Price on RemZe</h3><p>Tricks and tools our power users swear by.</p><div class="meta">Mar 2, 2026 · 4 min</div></div></div>
+  </div>
+
+  <div class="newsletter">
+    <h3>Stay in the Loop</h3>
+    <p>Get the latest deals, guides, and product news straight to your inbox.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="your@email.com"/>
+      <button onclick="alert('Subscribed! 🎉')">Subscribe</button>
+    </div>
+  </div>
+</div>
+<footer>© 2026 RemZe Private Limited · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Use</a></footer>
+</body>
+</html>
